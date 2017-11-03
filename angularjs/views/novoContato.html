@@ -1,0 +1,46 @@
+<div ng-controller="helloWorldctrl as ctr" layout="column" ng-cloak class="md-inline-form">
+       
+        <md-content layout="column">
+      <form name="contatoForm" novalidate autocomplete="off">
+    <div layout-sm="column" layout-xs="column" layout="row" >
+          <md-input-container class="md-block" flex >
+          <label>Nome</label>
+        <input name="nome" type="text" ng-model="testA.nome" ng-minlength="10" ng-required="true" placeholder="Nome">
+          </md-input-container>
+          <md-input-container class="md-block" flex >
+          <label>Telefone</label>
+        <input name="telefone" type="text" ng-model="testA.telefone " ng-required="true" ng-pattern="/^\d{4,5}-\d{4}$/" placeholder="Telefone">
+          </md-input-container>
+          <md-input-container class="md-block" flex >
+        <label>Operadora</label>
+        <md-select name="operadora" ng-model="testA.operadora" ng-required="true" md-on-open="ctr.carregarOperadoras()">
+            <md-option ng-value="operadora.nome" ng-repeat="operadora in ctr.operadoras">[[operadora.nome]]</md-option>
+        </md-select>
+          </md-input-container>
+          <md-input-container class="md-block" flex >
+          <label>Cor</label>
+        <md-select name="cor" ng-model="testA.cor" ng-required="true" md-on-open="ctr.carregarCores()">
+                <md-option ng-value="cor.cor" ng-repeat="cor in ctr.cores">[[cor.nome]]</md-option>
+        </md-select>
+          </md-input-container>
+        </div>                       
+        <div layout="row">
+            <md-button class="md-primary md-raised btn-block" ng-click="ctr.adicionarContato(testA)" ng-disabled="contatoForm.$invalid">Add</md-button>
+        </div>
+            [[testA]]
+     </form>
+      <div ng-show="contatoForm.nome.$error.required && contatoForm.nome.$dirty" class="alert alert-danger">
+         Preencha o Nome
+      </div>
+      <div ng-show="contatoForm.nome.$error.minlength" class="alert alert-danger">
+         O campo nome deve ter no minimo 10 caracteres.
+      </div>
+      
+      <div ng-show="contatoForm.telefone.$error.required && contatoForm.telefone.$dirty" class="alert alert-danger">
+          Preencha o Telefone
+      </div>
+      <div ng-show="contatoForm.telefone.$error.pattern" class="alert alert-danger">    
+          O campo telefone deve ter o formato DDDDD-DDDD
+        </div>
+        </md-content>
+</div>

@@ -1,0 +1,76 @@
+   <div ng-controller="helloWorldctrl as ctr" ng-cloak class="md-inline-form">
+    
+      <div class="jumbotron">
+<section layout="row" layout-align="center center">
+  <md-button class="groupX left">Apple</md-button>
+  <md-button class="groupX middle">Samsung</md-button>
+  <md-button class="groupX middle">Sony</md-button>
+  <md-button class="groupX right">B&amp;O</md-button>
+</section>
+       <ui-alert ng-show="ctr.error" title="Aconteceu um problema!">
+           [[ctr.error]]
+       </ui-alert>
+        <md-input-container class="md-block">
+          <label>Pesquisar</label>
+          <input ng-model="aBusca" ng-model-options="{updateOn:'default blur', debounce:{default:500, blur: 0}}">
+        </md-input-container>
+        <div ng-show="ctr.contatos.length > 0">
+               <table>
+                <md-list-item class="md-2-line">
+                    <div class="md-list-item-text" layout="row" layout-align="start center">
+                <span flex="5"></span>
+                <span flex="15">Foto</span>
+                <span flex="20"><a href="" ng-click="ctr.ordenarPor('nome')">Nome</a></span>
+                <span flex="15"><a href="" ng-click="ctr.ordenarPor('telefone')">Telefone</a></span>
+                <span flex="15">Operadora</span>
+                <span flex="15">Data</span>  
+                <span flex="15"></span>
+                    </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                   <md-divider></md-divider>
+                   <md-divider></md-divider>
+                   <md-divider></md-divider>
+                <md-list  class="lista" ng-class="{selecionado: contato.selecionado}" ng-repeat="(index, contato) in ctr.contatos | filter:{nome: aBusca} | orderBy:ctr.criterioDeOrdenacao:ctr.direcaoDeOrdenacao as lul" ng-model="ctr.contatos">
+                   <md-list-item class="md-2-line" >
+                    <div class="md-list-item-text" layout="row" layout-align="start center">
+                <span flex="5">
+                    <md-checkbox ng-model="::contato.selecionado" aria-label="Selecionar Item"></md-checkbox>
+                </span>
+                 <span flex="15">   
+                    <img ng-src="[[::ctr.foto + index]]" alt="Desce">
+                </span>
+                <span flex="20">
+                    <div class="md-list-item-text">
+                       <h3>[[::contato.nome | name]]</h3>
+                       <p>subscription</p>
+                    </div>
+                </span>
+                <span flex="15">     
+                    [[::contato.telefone]]
+                </span>
+                <span flex="15">   
+                    [[::contato.operadora]]
+                </span>
+                <span flex="15">
+                    [[::contato.dia | date:'dd/MM/yy']]
+                </span>    
+                <span flex="15">
+                    <md-button class="md-primary md-raised md-hue-2" ng-href="#!/atualizarContato/[[contato.id]]" aria-label="Atualizar Item"><md-icon md-svg-src="angularjs/img/pencil_ico.svg"></md-icon></md-button>
+                </span>
+                </div>
+                </md-list-item>
+                <md-divider></md-divider>
+                </md-list>
+                   <span ng-show="false">[[ctr.filteredItems = lul]]</span>
+                </table>
+                <p class="md-headline" ng-hide="ctr.filteredItems.length">Nenhum item foi encontrado!</p>
+        </div>
+        <div class="col-xs-12">
+          <md-button class="md-primary md-raised btn-block" href="#!/novoContato">Novo Contato</md-button>
+        </div>
+        <div class="col-xs-12">
+            <md-button class="md-warn md-raised btn-block" ng-click="ctr.apagarContatos(ctr.contatos)" ng-if="ctr.isContatoSelecionado(ctr.contatos)">Delete</md-button>
+        </div>
+            </div>
+</div>

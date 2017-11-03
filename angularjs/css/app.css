@@ -1,0 +1,74 @@
+.selecionado
+{
+    background-color: crimson;
+    font-weight: bold;
+}
+.margens{
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.groupX {
+    font-size: 16px;
+    margin: 20px 0;
+    padding: 3px 15px 3px 15px;
+    color: red;
+    background-color: blue;
+    text-transform: none;
+    font-weight: 400;
+    min-width:100px;
+}
+
+.md-button.left {
+    border-radius: 10px 0 0 10px;
+}
+
+.md-button.middle {
+    border-radius: 0;
+    border-left: 1px solid rgba(230, 230, 230, 0.96);
+    border-right: 1px solid rgba(230, 230, 230, 0.96);
+}
+
+.md-button.right {
+    border-radius: 0 10px 10px 0;
+}
+
+.groupX.md-button:not([disabled]):hover {
+    background-color: yellow;
+    color: green;
+    transition: 0.3s;
+}
+
+
+/*exemplo checkbox*/
+
+md-checkbox.dotted .md-icon {
+ border-width: 1px;
+ border-style: dashed;
+}
+
+
+/*botoes*/
+.buttondemoBasicUsage section {
+  background: grey;
+  border-radius: 3px;
+  text-align: center;
+  margin: 1em;
+  position: relative !important;
+  padding-bottom: 10px; }
+
+.buttondemoBasicUsage md-content {
+  margin-right: 7px; }
+
+.buttondemoBasicUsage section .md-button {
+  margin-top: 16px;
+  margin-bottom: 16px; }
+
+.buttondemoBasicUsage .label {
+  position: absolute;
+  bottom: 5px;
+  left: 7px;
+  font-size: 14px;
+  opacity: 0.54; }
+.lista{
+    padding: 0;
+}
